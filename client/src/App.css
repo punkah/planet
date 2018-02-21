@@ -1,0 +1,75 @@
+.App {
+  text-align: left;
+  white-space: nowrap;
+}
+
+.App-logo {
+  height: 300px;
+  width: 300px;
+  display: inline-block;
+  opacity: 0.5;
+}
+
+.App-header {
+  height: 300px;
+  padding: 20px;
+  color:  #ffffff;
+  background: rgb(39, 1, 1);
+}
+
+.App-content {
+  white-space: nowrap;
+  font-family: monospace;
+}
+
+.App-title-container {
+  display: inline-block;
+vertical-align: top;  
+margin-left: 50px;
+margin-top: 30px;
+}
+
+.App-title {
+  font-family: 'Futura PT','BlinkMacSystemFont','Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Fira Sans','Droid Sans','Helvetica Neue','Arial',sans-serif;
+
+  font-size: 120px;
+  letter-spacing: -0.5rem;
+}
+ 
+.header{
+  color: #fff;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start; 
+}
+
+.card-wrapper {
+  margin: 10px;
+  border: 1.5px dashed #093145;
+  width: 200px;
+  border-radius: 2rem;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.header {
+  background-color: #156a945d;
+  height: 80px;
+  white-space: nowrap;
+}
+
+.avatar {
+  height: 70%;
+  margin: 10px;
+  display:inline-block;
+}
+
+.name {
+  position: relative;
+  display: inline-block;
+  vertical-align: 2em;
+  color: #093145;  
+}
