@@ -16,8 +16,6 @@ class App extends Component {
   classForFarmableButton = "button";
   classForInvestmentButton = "button";
 
-
-
   componentDidMount() {
     this.callApi()
       .then(res => {
@@ -80,9 +78,9 @@ class App extends Component {
         </div>
         <div className="App-content">
           <div className="buttons">
-            <button className={this.classForLivableButton ? "button.selected" : "button"} onClick={this.toggleLivable}>Livable</button>
-            <button className={this.classForFarmableButton} onClick={this.toggleFarmable}>Farmable</button>
-            <button className={this.classForInvestmentButton} onClick={this.toggleInvestment}>Investment</button>
+            <button class={this.classForLivableButton ? "button.selected" : "button"} onClick={this.toggleLivable}>Livable</button>
+            <button class={this.classForFarmableButton} onClick={this.toggleFarmable}>Farmable</button>
+            <button class={this.classForInvestmentButton} onClick={this.toggleInvestment}>Investment</button>
           </div>
           <div className="cards">
             {this.state.planets.map(x => {
