@@ -9,7 +9,7 @@ const datastore = new Datastore({
   projectId: projectId,
 });
 
-app.use('/', express.static(`${__dirname}/client/build`));
+app.use('/', express.static(`${__dirname}/client/build/`));
 
 app.get('/api/planets', (req, res) => {
   const query = datastore.createQuery('planet');
@@ -24,11 +24,6 @@ app.get('/api/planets', (req, res) => {
     .catch(err => {
       console.error('ERROR:', err);
     });
-});
-
-// express will serve up index.html if it doesn't recognize the route
-app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, 'public', 'index.html'));
 });
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
