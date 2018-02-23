@@ -12,13 +12,21 @@ const datastore = new Datastore({
 app.use('/', express.static(`${__dirname}/client/build`));
 
 app.get('/api/planets', (req, res) => {
-  const query = datastore.createQuery('planet');
+  var query = datastore.createQuery('planet');
+
+  var livable = (req.query.livable == 'true');
+  var farmable = (req.query.farmable == 'true');
+  var investment = (req.query.investment == 'true');
+
+  if (livable) query = query.filter('isLivable', '=', livable)
+  if (farmable) query = query.filter('isFarmable', '=', farmable)
+  if (investment) query = query.filter('isInvestment', '=', investment);
 
   datastore
     .runQuery(query)
     .then(results => {
       const planets = results[0].map(x => ({
-        key: x[datastore.KEY],
+        key: x[datastore.KEY].id,
         name: x.name,
         price: x.price,
         distance: x.distance,

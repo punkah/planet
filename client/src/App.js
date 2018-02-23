@@ -1,65 +1,91 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import logo from './Moon-256.png';
 import './App.css';
+import ToggleButton from 'react-toggle-button';
+import Label from './Label';
+//import { browserHistory } from 'react-router';
 
 class App extends Component {
 
   state = {
-    planets: []
+    planets: [],
+    livable: false,
+    farmable: false,
+    investment: false
   };
 
-  Livable = false;
-  Farmable = false;
-  Investment = false;
-
-  classForLivableButton = "button";
-  classForFarmableButton = "button";
-  classForInvestmentButton = "button";
-
   componentDidMount() {
-    this.callApi()
+    this.loadData();
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.livable !== prevState.livable || this.state.farmable !== prevState.farmable || this.state.investment !== prevState.investment) 
+      this.loadData();
+    }
+  
+  callApi = async() => {
+    const response = await fetch('/api/planets?livable=' + this.state.livable + '&farmable=' + this.state.farmable + '&investment=' + this.state.investment);
+    const body = await response.json();
+
+    if (response.status !== 200) 
+      throw Error(body.message);
+    return body;
+  };
+
+  loadData() {
+    this
+      .callApi()
       .then(res => {
-        const reponse = res.map((x) => ({ name: x.name, price: x.price }));
-        this.setState({ planets: reponse });
+        const reponse = res.map((x) => ({
+          key: x.key,
+          name: x.name,
+          price: x.price,
+          livable: x.isLivable,
+          farmable: x.isFarmable,
+          investment: x.isInvestment
+        }));
+        this.setState({planets: reponse});
       })
       .catch(err => console.log(err));
   }
 
-  callApi = async () => {
-    const response = await fetch('/api/planets');
-    const body = await response.json();
-
-    if (response.status !== 200) throw Error(body.message);
-    return body;
-  };
-
   toggleLivable() {
-    this.Livable = !this.Livable;
-    if(this.Livable){
-      this.classForLivableButton = "button.selected"
-    }
-    else {
-      this.classForLivableButton = "button"
+    if (this.state.livable === false) {
+      this.setState({
+        livable: !this.state.livable,
+        investment: false
+      });
+    } else {
+      this.setState({
+        livable: !this.state.livable
+      });
     }
   }
 
   toggleFarmable() {
-    this.Farmable = !this.Farmable;
-    if(this.Farmable){
-      this.classForFarmableButton = "button.selected"
-    }
-    else {
-      this.classForFarmableButton = "button"
+    if (this.state.farmable === false) {
+      this.setState({
+        farmable: !this.state.farmable,
+        investment: false
+      });
+    } else {
+      this.setState({
+        farmable: !this.state.farmable
+      });
     }
   }
 
   toggleInvestment() {
-    this.Investment = !this.Investment;
-    if(this.Investment){
-      this.classForInvestmentButton = "button.selected"
-    }
-    else {
-      this.classForInvestmentButton = "button"
+    if (this.state.investment === false) {
+      this.setState({
+        investment: !this.state.investment,
+        livable: false,
+        farmable: false
+      });
+    } else {
+      this.setState({
+        investment: !this.state.investment
+      });
     }
   }
 
@@ -71,38 +97,73 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
+          < img src={logo} className="App-logo" alt="logo"/>
           <div className="App-title-container">
-            <h1 className="App-title">Planet Real Estate</h1>
+            <h1 className="App-title">
+              Planet Real Estate
+            </h1>
           </div>
         </div>
         <div className="App-content">
-          <div className="buttons">
-            <button class={this.classForLivableButton ? "button.selected" : "button"} onClick={this.toggleLivable}>Livable</button>
-            <button class={this.classForFarmableButton} onClick={this.toggleFarmable}>Farmable</button>
-            <button class={this.classForInvestmentButton} onClick={this.toggleInvestment}>Investment</button>
+          <div className="button-wrapper">
+            <div className="button">
+              <p>
+                Liveable
+              </p>
+              <ToggleButton value={this.state.livable} onToggle={this.toggleLivable}/>
+            </div>
+            <div className="plus">
+              +
+            </div>
+            <div className="button">
+              <p>
+                Farmable
+              </p>
+              <ToggleButton value={this.state.farmable} onToggle={this.toggleFarmable}/>
+            </div>
+            <div className="divider"/>
+            <div className="button">
+              <p>
+                Investment
+              </p>
+              <ToggleButton value={this.state.investment} onToggle={this.toggleInvestment}/>
+            </div>
           </div>
           <div className="cards">
-            {this.state.planets.map(x => {
-              return (
-                <div className="card-wrapper">
-                  <div className="header">
-                    <img className="avatar" src={logo} alt="avatar" />
-                    <div className="name"> <h3>{x.name} </h3> </div>
+            {this
+              .state
+              .planets
+              .map(x => {
+                return (
+                  <div className="card-wrapper" key={x.key} onClick={this.onCardClick(x.key)}>
+                    <div className="header">
+                      <img className="avatar" src={logo} alt="avatar"/>
+                      <div className="name">
+                        < h3>
+                          {x.name}
+                        </h3>
+                      </div>
+                    </div>
+                    <div className="content">
+                      <ul className="contact-info">
+                        <li>
+                          <i className="fa fa-phone"></i>Price: {x.price}</li>
+                        <li>
+                          <i className="fa fa-envelope"></i>Distance: {x.price}</li>
+                      </ul>
+                      <div className="label-wrapper">
+                        <Label text="Livable" value={x.livable}/>
+                        <Label text="Farmable" value={x.farmable}/>
+                        <Label text="Investment" value={x.investment}/>
+                      </div>
+                    </div>
                   </div>
-                  <div className="content">
-                    <ul className="contact-info">
-                      <li><i className="fa fa-phone"></i>Price: {x.price}</li>
-                      <li><i className="fa fa-envelope"></i>Distance: {x.price}</li>
-                    </ul>
-                  </div>
-                </div>
-              )
-            })}
+                )
+              })}
           </div>
         </div>
       </div>
-    );
+    )
   }
 }
 
