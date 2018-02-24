@@ -42,4 +42,29 @@ app.get('/api/planets', (req, res) => {
     });
 });
 
+app.get('/api/planets/:id', (req, res) => {
+  var key = Number(req.params.id);
+
+  var query = datastore.createQuery('planet').filter('__key__', '=', datastore.key(['planet', key]));
+
+  datastore
+    .runQuery(query)
+    .then(results => {
+      const planets = ({
+        key: results[0][0][datastore.KEY].id,
+        name: results[0][0].name,
+        price: results[0][0].price,
+        distance: results[0][0].distance,
+        isLivable: results[0][0].isLivable,
+        isFarmable: results[0][0].isFarmable,
+        isInvestment: results[0][0].isInvestment
+      });
+
+      res.json(planets);
+    })
+    .catch(err => {
+      console.error('ERROR:', err);
+    });
+});
+
 app.listen(port, () => console.log(`Listening on port ${port}`));

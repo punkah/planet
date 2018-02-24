@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
-import logo from './Moon-256.png';
-import './App.css';
+import logo from 'resources/images/Moon-256.png';
+import './Home.css';
 import ToggleButton from 'react-toggle-button';
-import Label from './Label';
-//import { browserHistory } from 'react-router';
+import Label from 'components/Label/Label';
+import {LinkContainer} from 'react-router-bootstrap';
 
-class App extends Component {
+class Home extends Component {
 
   state = {
     planets: [],
@@ -40,6 +40,7 @@ class App extends Component {
           key: x.key,
           name: x.name,
           price: x.price,
+          distance: x.distance,
           livable: x.isLivable,
           farmable: x.isFarmable,
           investment: x.isInvestment
@@ -89,22 +90,44 @@ class App extends Component {
     }
   }
 
-  toggleLivable = this.toggleLivable.bind(this);
-  toggleFarmable = this.toggleFarmable.bind(this);
-  toggleInvestment = this.toggleInvestment.bind(this);
+  onCardClick(key) {
+    this
+      .context
+      .router
+      .push('/sample');
+    // window.location('/planets/' + key);
+  }
+
+  toggleLivable = this
+    .toggleLivable
+    .bind(this);
+  toggleFarmable = this
+    .toggleFarmable
+    .bind(this);
+  toggleInvestment = this
+    .toggleInvestment
+    .bind(this);
+  onCardClick = this
+    .onCardClick
+    .bind(this);
 
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          < img src={logo} className="App-logo" alt="logo"/>
-          <div className="App-title-container">
-            <h1 className="App-title">
+      <div className="Home">
+        <div className="Home-header">
+          <img src={logo} className="Home-logo" alt="logo"/>
+          <div className="Home-title-container">
+            <h1 className="Home-title">
               Planet Real Estate
             </h1>
           </div>
+          <div>
+            <p>Contact us!<br/>
+              Phone: 044 444 444<br/>
+              Email: wesellplanets@universe.org</p>
+          </div>
         </div>
-        <div className="App-content">
+        <div className="Home-content">
           <div className="button-wrapper">
             <div className="button">
               <p>
@@ -130,34 +153,37 @@ class App extends Component {
             </div>
           </div>
           <div className="cards">
+
             {this
               .state
               .planets
               .map(x => {
                 return (
-                  <div className="card-wrapper" key={x.key} onClick={this.onCardClick(x.key)}>
-                    <div className="header">
-                      <img className="avatar" src={logo} alt="avatar"/>
-                      <div className="name">
-                        < h3>
-                          {x.name}
-                        </h3>
+                  <LinkContainer to={`/planet/${x.key}`} key={x.key}>
+                    <div className="card-wrapper" key={x.key}>
+                      <div className="header">
+                        <img className="avatar" src={logo} alt="avatar"/>
+                        <div className="name">
+                          < h3>
+                            {x.name}
+                          </h3>
+                        </div>
+                      </div>
+                      <div className="content">
+                        <ul>
+                          <li>
+                            Price: {x.price}</li>
+                          <li>
+                            Distance: {x.distance}</li>
+                        </ul>
+                        <div className="label-wrapper">
+                          <Label text="Livable" value={x.livable}/>
+                          <Label text="Farmable" value={x.farmable}/>
+                          <Label text="Investment" value={x.investment}/>
+                        </div>
                       </div>
                     </div>
-                    <div className="content">
-                      <ul className="contact-info">
-                        <li>
-                          <i className="fa fa-phone"></i>Price: {x.price}</li>
-                        <li>
-                          <i className="fa fa-envelope"></i>Distance: {x.price}</li>
-                      </ul>
-                      <div className="label-wrapper">
-                        <Label text="Livable" value={x.livable}/>
-                        <Label text="Farmable" value={x.farmable}/>
-                        <Label text="Investment" value={x.investment}/>
-                      </div>
-                    </div>
-                  </div>
+                  </LinkContainer>
                 )
               })}
           </div>
@@ -167,4 +193,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default Home;

@@ -1,0 +1,41 @@
+.Planet {
+    text-align: left;
+    white-space: nowrap;
+  }
+  
+  .Planet-logo {
+    height: 200px;
+    width: 200px;
+    display: inline-block;
+  }
+  
+  .Planet-header {
+    height: 200px;
+    padding: 20px;
+    color: #ffffff;
+    background: rgb(39, 1, 1);
+    position: relative;
+  }
+  
+  .Planet-content {
+    white-space: nowrap;
+    font-family: monospace;
+  }
+  
+  .Planet-title-container {
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 50px;
+  }
+  
+  .Planet-title {
+    font-family: 'Futura PT', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', 'Arial', sans-serif;
+    font-size: 80px;
+    margin:auto;
+  }
+  
+  .avatar {
+    height: 70%;
+    margin: 10px;
+    display: inline-block;
+  }
