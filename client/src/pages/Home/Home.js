@@ -2,8 +2,7 @@ import React, {Component} from 'react';
 import logo from 'resources/images/Moon-256.png';
 import './Home.css';
 import ToggleButton from 'react-toggle-button';
-import Label from 'components/Label/Label';
-import {LinkContainer} from 'react-router-bootstrap';
+import Card from 'components/Card/Card';
 
 class Home extends Component {
 
@@ -90,14 +89,6 @@ class Home extends Component {
     }
   }
 
-  onCardClick(key) {
-    this
-      .context
-      .router
-      .push('/sample');
-    // window.location('/planets/' + key);
-  }
-
   toggleLivable = this
     .toggleLivable
     .bind(this);
@@ -106,9 +97,6 @@ class Home extends Component {
     .bind(this);
   toggleInvestment = this
     .toggleInvestment
-    .bind(this);
-  onCardClick = this
-    .onCardClick
     .bind(this);
 
   render() {
@@ -153,38 +141,11 @@ class Home extends Component {
             </div>
           </div>
           <div className="cards">
-
             {this
               .state
               .planets
               .map(x => {
-                return (
-                  <LinkContainer to={`/planet/${x.key}`} key={x.key}>
-                    <div className="card-wrapper" key={x.key}>
-                      <div className="header">
-                        <img className="avatar" src={logo} alt="avatar"/>
-                        <div className="name">
-                          < h3>
-                            {x.name}
-                          </h3>
-                        </div>
-                      </div>
-                      <div className="content">
-                        <ul>
-                          <li>
-                            Price: {x.price}</li>
-                          <li>
-                            Distance: {x.distance}</li>
-                        </ul>
-                        <div className="label-wrapper">
-                          <Label text="Livable" value={x.livable}/>
-                          <Label text="Farmable" value={x.farmable}/>
-                          <Label text="Investment" value={x.investment}/>
-                        </div>
-                      </div>
-                    </div>
-                  </LinkContainer>
-                )
+                return (<Card key={x.key} value={x}/>)
               })}
           </div>
         </div>

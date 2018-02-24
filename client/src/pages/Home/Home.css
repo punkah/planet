@@ -32,47 +32,12 @@
   letter-spacing: -0.5rem;
 }
 
-.header {
-  color: #fff;
-}
-
 .cards {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
 }
 
-.card-wrapper {
-  margin: 10px;
-  border: 1.5px dashed #093145;
-  width: 200px;
-  border-radius: 1.5rem;
-  overflow: hidden;
-  cursor: pointer;
-}
-
-.card-wrapper:hover {
-  background-color: rgb(243, 242, 242);
-}
-
-.header {
-  background-color: #156a945d;
-  height: 80px;
-  white-space: nowrap;
-}
-
-.avatar {
-  height: 70%;
-  margin: 10px;
-  display: inline-block;
-}
-
-.name {
-  position: relative;
-  display: inline-block;
-  vertical-align: 2em;
-  color: #093145;
-}
 
 .button-wrapper {
   text-align: center;
@@ -90,10 +55,4 @@
 
 .plus {
   display: inline;
-}
-
-.label-wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  padding: 0 15px 5px 20px;
 }

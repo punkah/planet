@@ -69,7 +69,7 @@ class Planet extends Component {
                             {this.state.planet.name || "Loading..."}
                         </h1>
                     </div>
-                    <div>
+                    <div className="contactUs">
                         <p>Contact us!<br/>
                             Phone: 044 444 444<br/>
                             Email: wesellplanets@universe.org</p>

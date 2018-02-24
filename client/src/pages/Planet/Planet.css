@@ -39,3 +39,7 @@
     margin: 10px;
     display: inline-block;
   }
+
+  .contactUs {
+      float:right;
+  }
