@@ -11,9 +11,9 @@ class Planet extends Component {
             name: "",
             price: "",
             distance: "",
-            livable: "",
-            farmable: "",
-            investment: ""
+            livable: false,
+            farmable: false,
+            investment: false
         }
     };
 
@@ -69,7 +69,7 @@ class Planet extends Component {
                             {this.state.planet.name || "Loading..."}
                         </h1>
                     </div>
-                    <div className="contactUs">
+                    <div className="Planet-contactUs">
                         <p>Contact us!<br/>
                             Phone: 044 444 444<br/>
                             Email: wesellplanets@universe.org</p>

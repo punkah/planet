@@ -11,7 +11,7 @@
 .Home-header {
   padding: 20px;
   color: #ffffff;
-  background: rgb(39, 1, 1);
+  background: linear-gradient(to right, #000000 0%,#156a94 80%);
 }
 
 .Home-content {
@@ -29,7 +29,8 @@
 .Home-title {
   font-family: 'Futura PT', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', 'Arial', sans-serif;
   font-size: 120px;
-  letter-spacing: -0.5rem;
+  letter-spacing: -0.1rem;
+  margin-bottom:  0;
 }
 
 .cards {

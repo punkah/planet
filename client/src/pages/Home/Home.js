@@ -108,6 +108,7 @@ class Home extends Component {
             <h1 className="Home-title">
               Planet Real Estate
             </h1>
+            <h2>We sell planets.</h2>
           </div>
           <div>
             <p>Contact us!<br/>

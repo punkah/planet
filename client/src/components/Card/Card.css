@@ -13,7 +13,7 @@
   
   .header {
     background-color: #156a945d;
-    color: #fff;
+    color: #333333;
     height: 80px;
     white-space: nowrap;
   }
@@ -28,7 +28,6 @@
     position: relative;
     display: inline-block;
     vertical-align: 2em;
-    color: #093145;
   }
 
   .label-wrapper {
