@@ -1,4 +1,4 @@
-.card-wrapper {
+ .Card-wrapper {
     margin: 10px;
     border: 1.5px dashed #093145;
     width: 200px;
@@ -7,30 +7,30 @@
     cursor: pointer;
   }
   
-  .card-wrapper:hover {
+  .Card-wrapper:hover {
     background-color: rgb(243, 242, 242);
   }
   
-  .header {
+  .Card-header {
     background-color: #156a945d;
     color: #333333;
     height: 80px;
     white-space: nowrap;
   }
   
-  .avatar {
+  .Card-avatar {
     height: 70%;
     margin: 10px;
     display: inline-block;
   }
   
-  .name {
+  .Card-name {
     position: relative;
     display: inline-block;
     vertical-align: 2em;
   }
 
-  .label-wrapper {
+  .Card-label-wrapper {
     display: flex;
     flex-wrap: wrap;
     padding: 0 15px 5px 20px;

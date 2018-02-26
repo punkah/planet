@@ -117,31 +117,32 @@ class Home extends Component {
           </div>
         </div>
         <div className="Home-content">
-          <div className="button-wrapper">
-            <div className="button">
+          <div className="Home-filter-wrapper">
+           <p className="Home-filter-label">Filters:</p>
+            <div className="Home-filter-button">
               <p>
                 Liveable
               </p>
               <ToggleButton value={this.state.livable} onToggle={this.toggleLivable}/>
             </div>
-            <div className="plus">
+            <div className="Home-plus">
               +
             </div>
-            <div className="button">
+            <div className="Home-filter-button">
               <p>
                 Farmable
               </p>
               <ToggleButton value={this.state.farmable} onToggle={this.toggleFarmable}/>
             </div>
-            <div className="divider"/>
-            <div className="button">
+            <div className="Home-divider"/>
+            <div className="Home-filter-button">
               <p>
                 Investment
               </p>
               <ToggleButton value={this.state.investment} onToggle={this.toggleInvestment}/>
             </div>
           </div>
-          <div className="cards">
+          <div className="Home-cards">
             {this
               .state
               .planets

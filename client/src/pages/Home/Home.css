@@ -17,6 +17,8 @@
 .Home-content {
   white-space: nowrap;
   font-family: monospace;
+  max-width: 1800px;
+  margin-left: 20px;
 }
 
 .Home-title-container {
@@ -33,27 +35,31 @@
   margin-bottom:  0;
 }
 
-.cards {
+.Home-cards {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
 }
 
 
-.button-wrapper {
+.Home-filter-wrapper {
+  margin-left: 30px;
   text-align: center;
 }
 
-.button {
+.Home-filter-label {
+  display: inline-grid;
+}
+.Home-filter-button {
   display: inline-grid;
   margin: 15px;
 }
 
-.divider {
+.Home-divider {
   display: inline;
   border-left: 1px solid black;
 }
 
-.plus {
+.Home-plus {
   display: inline;
 }

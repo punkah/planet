@@ -8,7 +8,7 @@ class Label extends React.Component {
 
         if (this.props.value) {
             return (
-                <div className="label">{this.props.text}</div>
+                <div className="Label-text">{this.props.text}</div>
             );
         }
         return null;

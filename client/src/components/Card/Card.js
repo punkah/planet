@@ -26,23 +26,23 @@ class Card extends Component {
     render() {
         return (
             <LinkContainer to={`/planet/${this.state.planet.key}`} key={this.state.planet.key}>
-                <div className="card-wrapper" key={this.state.planet.key}>
-                    <div className="header">
-                        <img className="avatar" src={logo} alt="avatar"/>
-                        <div className="name">
+                <div className="Card-wrapper" key={this.state.planet.key}>
+                    <div className="Card-header">
+                        <img className="Card-avatar" src={logo} alt="avatar"/>
+                        <div className="Card-name">
                             < h3>
                                 {this.state.planet.name}
                             </h3>
                         </div>
                     </div>
-                    <div className="content">
+                    <div>
                         <ul>
                             <li>
                                 Price: {this.state.planet.price}</li>
                             <li>
                                 Distance: {this.state.planet.distance}</li>
                         </ul>
-                        <div className="label-wrapper">
+                        <div className="Card-label-wrapper">
                             <Label text="Livable" value={this.state.planet.livable}/>
                             <Label text="Farmable" value={this.state.planet.farmable}/>
                             <Label text="Investment" value={this.state.planet.investment}/>
